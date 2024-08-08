@@ -30,7 +30,7 @@ public:
         cout.flush();
 
         for (int i = 0; i < barWidth; ++i) {
-            this_thread::sleep_for(chrono::milliseconds(40));
+            // this_thread::sleep_for(chrono::milliseconds(40));
             cout << "#";
             cout.flush();
         }
@@ -272,6 +272,7 @@ public:
                 exp.setCategory();
                 exp.setNote();
                 expenses[expenseCount++] = exp;
+                cout << "==========================================================================" << endl;
                 cout << "Expense added successfully." << endl;
             } catch (const exception &e) {
                 cout << "Error adding expense: " << e.what() << endl;
@@ -279,6 +280,7 @@ public:
         } else {
             cout << "Expense limit reached. Cannot add more expenses." << endl;
         }
+        cout << "==========================================================================" << endl;
     }
 
     void showAllExpenses() const {
@@ -312,6 +314,7 @@ public:
     }
 
     void updateExpense(int index) {
+        cout << "==========================================================================" << endl;
         if (index >= 0 && index < expenseCount) {
             Expenses &exp = expenses[index];
             string input;
@@ -365,11 +368,12 @@ public:
             if (!input.empty()) {
                 exp.setNote(input);
             }
-
+            cout << "==========================================================================" << endl;
             cout << "Expense updated successfully." << endl;
         } else {
             cout << "Invalid expense index." << endl;
         }
+        cout << "==========================================================================" << endl;
     }
 
     void removeExpense(int index) {
@@ -378,13 +382,16 @@ public:
                 expenses[i] = expenses[i + 1];
             }
             --expenseCount;
+            cout << "==========================================================================" << endl;
             cout << "Expense removed successfully." << endl;
         } else {
             cout << "Invalid expense index." << endl;
         }
+        cout << "==========================================================================" << endl;
     }
 
     void displayOptions() const {
+        cout << "==========================================================================" << endl;
         cout << "+----+----------------------------+" << endl;
         cout << "| SN | Option                     |" << endl;
         cout << "+----+----------------------------+" << endl;
@@ -395,6 +402,7 @@ public:
         cout << "| 5  | Remove an Expense          |" << endl;
         cout << "| 6  | Exit                       |" << endl;
         cout << "+----+----------------------------+" << endl;
+        cout << "==========================================================================" << endl;
     }
 
     bool checkOptions(int ch) const {
@@ -405,9 +413,9 @@ public:
         int ch;
         LoadingScreen ls;
         ls.showLoadingBar();
-        this_thread::sleep_for(chrono::seconds(1));
+        // this_thread::sleep_for(chrono::seconds(1));
         ls.showIntro();
-        this_thread::sleep_for(chrono::seconds(1));
+        // this_thread::sleep_for(chrono::seconds(1));
 
         do {
             displayOptions();
